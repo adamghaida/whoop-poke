@@ -11,6 +11,8 @@ services:
         value: 20
       - key: POKE_INTEGRATION_API_KEY
         sync: false
+      - key: MCP_ALLOWED_HOSTS
+        sync: false
       - key: WHOOP_CLIENT_ID
         sync: false
       - key: WHOOP_CLIENT_SECRET

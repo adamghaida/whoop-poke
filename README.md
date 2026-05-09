@@ -76,6 +76,7 @@ This repo includes `render.yaml` for Render. Any Node host works as long as it p
 
 ```bash
 POKE_INTEGRATION_API_KEY=optional-shared-secret
+MCP_ALLOWED_HOSTS=your-deployment.example.com
 WHOOP_CLIENT_ID=...
 WHOOP_CLIENT_SECRET=...
 WHOOP_REDIRECT_URI=...
@@ -84,6 +85,8 @@ WHOOP_REFRESH_TOKEN=...
 ```
 
 If `POKE_INTEGRATION_API_KEY` is set, requests must include the same value as `Authorization: Bearer ...`, `x-api-key`, or an `api_key` query parameter. When creating the custom integration in Poke, put the same value in the optional API Key field.
+
+Render usually sets `RENDER_EXTERNAL_HOSTNAME` automatically. If you see `Invalid Host`, set `MCP_ALLOWED_HOSTS` to your Render hostname, for example `whoop-poke.onrender.com`.
 
 ## Connect To Poke
 

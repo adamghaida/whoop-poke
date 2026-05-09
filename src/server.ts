@@ -129,7 +129,10 @@ function rejectUnauthorized(res: { status: (code: number) => { json: (body: unkn
   });
 }
 
-const app = createMcpExpressApp();
+const app = createMcpExpressApp({
+  host: "0.0.0.0",
+  allowedHosts: config.allowedHosts,
+});
 
 app.get("/", (_req, res) => {
   res.json({
