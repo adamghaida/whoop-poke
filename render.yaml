@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: whoop-poke
+    runtime: node
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /healthz
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: POKE_INTEGRATION_API_KEY
+        sync: false
+      - key: WHOOP_CLIENT_ID
+        sync: false
+      - key: WHOOP_CLIENT_SECRET
+        sync: false
+      - key: WHOOP_REDIRECT_URI
+        sync: false
+      - key: WHOOP_ACCESS_TOKEN
+        sync: false
+      - key: WHOOP_REFRESH_TOKEN
+        sync: false
