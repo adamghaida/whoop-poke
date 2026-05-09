@@ -133,6 +133,7 @@ export class WhoopClient {
       refresh_token: this.tokens.refreshToken,
       client_id: this.config.whoopClientId,
       client_secret: this.config.whoopClientSecret,
+      scope: "offline",
     });
 
     const response = await fetch(WHOOP_TOKEN_URL, {

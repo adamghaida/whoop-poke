@@ -153,7 +153,15 @@ app.get("/healthz", (_req, res) => {
 app.get("/oauth/callback", (req, res) => {
   const code = req.query.code;
   if (typeof code !== "string") {
-    res.status(400).send("Missing OAuth code in callback URL.");
+    const details = JSON.stringify(req.query, null, 2);
+    res.status(400).type("text/plain").send(`WHOOP did not return an OAuth code.
+
+Callback query:
+${details}
+
+Check that the redirect URL in the WHOOP developer dashboard exactly matches:
+${config.whoopRedirectUri}
+`);
     return;
   }
 

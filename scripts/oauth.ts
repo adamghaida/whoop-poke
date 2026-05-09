@@ -1,4 +1,5 @@
 import "dotenv/config";
+import { randomBytes } from "node:crypto";
 import { DEFAULT_WHOOP_SCOPES, WHOOP_AUTH_URL, WHOOP_TOKEN_URL, getConfig } from "../src/config.js";
 
 type TokenResponse = {
@@ -21,12 +22,9 @@ if (command === "url") {
   url.searchParams.set("redirect_uri", oauth.redirectUri);
   url.searchParams.set("response_type", "code");
   url.searchParams.set("scope", DEFAULT_WHOOP_SCOPES.join(" "));
+  url.searchParams.set("state", args.state ?? randomBytes(4).toString("hex"));
 
-  if (args.state) {
-    url.searchParams.set("state", args.state);
-  }
-
-  console.log(url.toString());
+  console.log(url.toString().replace(/\+/g, "%20"));
 } else if (command === "token") {
   const oauth = getOAuthConfig();
 
